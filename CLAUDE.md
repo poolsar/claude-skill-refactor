@@ -87,17 +87,27 @@ git clone https://github.com/poolsar/claude-skill-refactor "$env:USERPROFILE\.cl
 
 ### BACKLOG.md
 
-The single source of truth for planned improvements. Each item describes what to do and
-why it matters. Items are grouped by theme (skill structure, new reference files, workflow
-improvements, etc.).
+The single source of truth for planned improvements. Keep it simple and concise — it is
+edited by hand, so structure must stay minimal. One line per item is the target; two lines
+maximum when a brief reason is needed. No headers, no sections, no elaborate formatting.
 
-When picking up development work:
-- Read `BACKLOG.md` first to understand what is planned and the reasoning behind each item.
-- When starting an item, note it in the conversation so progress is clear.
-- When an item is fully implemented, **remove it from `BACKLOG.md`** and add it to
-  `RELEASE_NOTES.md` under a new dated entry.
-- New ideas that come up during development but won't be done immediately go into
-  `BACKLOG.md`, not into comments or conversation context.
+```markdown
+- Extract principles index from SKILL.md to references/principles.md
+- Add references/python.md for Python-specific idioms
+- Add references/naming.md — expanded naming strategies
+```
+
+Do not read `BACKLOG.md` proactively. Use it only when the user explicitly points to it:
+
+- **"work on the X backlog item"** — read `BACKLOG.md`, find the item, implement it, then
+  remove it from `BACKLOG.md` and add it to `RELEASE_NOTES.md` under a new dated entry.
+- **"add X to the backlog"** — append one line to `BACKLOG.md`.
+- **"show me the backlog"** — read and display `BACKLOG.md`.
+
+If during any development session Claude notices a potential improvement, limitation, or
+follow-up idea that is out of scope for the current task, suggest adding it to `BACKLOG.md`
+rather than mentioning it in passing and losing it to conversation history. Phrase it as:
+"I noticed X — want me to add it to the backlog?"
 
 ### RELEASE_NOTES.md
 
