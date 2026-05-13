@@ -35,6 +35,8 @@ references/
   safe_refactoring.md             — Safe Refactoring Mode: characterization test workflow
                                     based on Feathers' Working Effectively with Legacy Code
 CLAUDE.md                         — this file
+BACKLOG.md                        — planned improvements not yet implemented
+RELEASE_NOTES.md                  — history of completed changes, newest entry first
 ```
 
 ## Skill workflow (summary)
@@ -81,6 +83,37 @@ git clone https://github.com/poolsar/claude-skill-refactor "$env:USERPROFILE\.cl
 - **safe_refactoring.md is self-contained.** It must be readable as a standalone
   step-by-step guide without assuming the reader has SKILL.md in context.
 
+## Tracking work
+
+### BACKLOG.md
+
+The single source of truth for planned improvements. Each item describes what to do and
+why it matters. Items are grouped by theme (skill structure, new reference files, workflow
+improvements, etc.).
+
+When picking up development work:
+- Read `BACKLOG.md` first to understand what is planned and the reasoning behind each item.
+- When starting an item, note it in the conversation so progress is clear.
+- When an item is fully implemented, **remove it from `BACKLOG.md`** and add it to
+  `RELEASE_NOTES.md` under a new dated entry.
+- New ideas that come up during development but won't be done immediately go into
+  `BACKLOG.md`, not into comments or conversation context.
+
+### RELEASE_NOTES.md
+
+A dated log of what was built. Newest entry at the top. Each entry records:
+- The date (`YYYY-MM-DD`)
+- What changed and why — written at the feature level, not the diff level
+
+When completing a session that modified the skill:
+- Add a new entry at the top of `RELEASE_NOTES.md` with today's date.
+- Summarise what changed. Be specific enough that a future reader understands what the
+  skill can now do that it couldn't before.
+- Do not repeat information already visible in git commit messages — focus on the
+  user-facing or developer-facing impact.
+
+---
+
 ## Testing the skill
 
 Open any software project in Claude Code and say:
@@ -96,8 +129,3 @@ To test Safe Refactoring Mode:
 3. Claude should follow the characterization-test workflow from `references/safe_refactoring.md`
    before touching any source file.
 
-## Planned extensions
-
-- Language-specific reference files (e.g., `references/python.md`, `references/typescript.md`)
-  for idioms and conventions that go beyond language-agnostic principles.
-- A `references/naming.md` deep-dive on naming strategies across different code elements.
